@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* ================= THEME ================= */
+
+body {
+  background: #0f172a;
+  color: #ffffff;
+  transition: 0.5s ease;
+  overflow-x: hidden;
+}
+
+.light {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* ================= TOP BAR ================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.topbar h1 {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.topbar button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.topbar button:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+/* ================= WORLD MAP ================= */
+
+.map-container {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+.map {
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  animation: fadeZoom 1s ease;
+}
+
+/* ================= HOTSPOTS ================= */
+
+.hotspot {
+  position: absolute;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  user-select: none;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+}
+
+.hotspot:hover {
+  transform: scale(1.6) rotate(5deg);
+}
+
+/* ================= SEARCH ================= */
+
+#results {
+  margin: 20px auto;
+  text-align: center;
+}
+
+#results p {
+  padding: 10px;
+  margin: 8px auto;
+  width: 220px;
+  background: #1e293b;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#results p:hover {
+  background: #334155;
+  transform: scale(1.05);
+}
+
+/* ================= COUNTRY IMAGE ================= */
+
+.country-img {
+  width: 80%;
+  max-width: 750px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  transition: 0.5s ease;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+  background: rgba(30, 41, 59, 0.9);
+  margin: 20px auto;
+  padding: 20px;
+  width: 85%;
+  max-width: 850px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: slideUp 0.7s ease;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+/* ================= AUDIO ================= */
+
+audio {
+  width: 80%;
+  margin-top: 10px;
+}
+
+/* ================= 360 PANORAMA ================= */
+
+.panorama {
+  width: 85%;
+  height: 300px;
+  margin: 25px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.panorama:active {
+  cursor: grabbing;
+}
+
+.panorama-inner {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.1s linear;
+}
+
+/* ================= BUTTONS ================= */
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #22c55e;
+  color: white;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+/* ================= LOADER ================= */
+
+.loader {
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+  animation: pulse 1.5s infinite;
+}
+
+/* ================= DARK/LIGHT FIX ================= */
+
+.light .card {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.light .topbar {
+  background: #e2e8f0;
+}
+
+.light #results p {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .map {
+    width: 95%;
+  }
+
+  .country-img {
+    width: 95%;
+  }
+
+  .card {
+    width: 95%;
+  }
+
+  .panorama {
+    width: 95%;
+    height: 220px;
+  }
+}

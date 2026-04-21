@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Virtual Travel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topbar">
+  <h1>🌍 Virtual Travel Experience</h1>
+
+  <input type="text" id="search" placeholder="Search country...">
+
+  <button onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="map-container">
+  <img src="assets/images/world-map.png" class="map">
+
+  <div class="hotspot" onclick="openCountry('japan')">🇯🇵</div>
+  <div class="hotspot" onclick="openCountry('srilanka')">🇱🇰</div>
+  <div class="hotspot" onclick="openCountry('france')">🇫🇷</div>
+</div>
+
+<div id="results"></div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

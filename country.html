@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Virtual Travel - Country View</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <h1>🌍 Virtual Travel Experience</h1>
+    <button onclick="goBack()">⬅ Back</button>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app"></div>
+
+  <!-- SCRIPTS -->
+  <script src="data.js"></script>
+  <script src="ui.js"></script>
+
+  <script>
+    // ---------------- LOAD COUNTRY ----------------
+    const key = localStorage.getItem("selectedCountry");
+
+    if (!key || !countries[key]) {
+      document.getElementById("app").innerHTML = `
+        <div class="card">
+          <h2>⚠ No Country Selected</h2>
+          <p>Please go back and select a country from the world map.</p>
+          <button onclick="goBack()">Go Back</button>
+        </div>
+      `;
+    } else {
+      const data = countries[key];
+
+      // Show loader first
+      document.getElementById("app").innerHTML = showLoader();
+
+      setTimeout(() => {
+        document.getElementById("app").innerHTML = renderCountry(data);
+
+        fadeInPage();
+        startPanoramaEffect();
+        showToast("🌍 Welcome to " + data.name);
+
+        setupCountryFeatures(data);
+
+        setup360(data.image);
+
+      }, 1000);
+    }
+
+    // ---------------- FEATURES ----------------
+    function setupCountryFeatures(data) {
+
+      // Auto play audio safely
+      const audio = document.querySelector("audio");
+      if (audio) {
+        audio.volume = 0.5;
+        audio.play().catch(() => {
+          console.log("Autoplay blocked");
+        });
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "r") {
+          showToast("🔄 Reloading...");
+          location.reload();
+        }
+
+        if (e.key === "b") {
+          goBack();
+        }
+      });
+
+      // Image hover effect
+      const img = document.getElementById("mainImg");
+      if (img) {
+        img.addEventListener("mouseenter", () => {
+          img.style.transform = "scale(1.05) rotateY(5deg)";
+        });
+
+        img.addEventListener("mouseleave", () => {
+          img.style.transform = "scale(1) rotateY(0deg)";
+        });
+      }
+    }
+
+    // ---------------- 360° PANORAMA ----------------
+    function setup360(image) {
+      const pano = document.querySelector(".panorama-inner");
+
+      pano.style.backgroundImage = `url(${image})`;
+
+      let isDragging = false;
+      let startX = 0;
+      let currentX = 0;
+
+      const container = document.getElementById("panorama");
+
+      container.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+      });
+
+      container.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      container.addEventListener("mouseleave", () => {
+        isDragging = false;
+      });
+
+      container.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        let moveX = e.clientX - startX;
+        currentX += moveX * 0.5;
+
+        pano.style.transform = `translateX(${currentX}px)`;
+
+        startX = e.clientX;
+      });
+
+      // Touch support
+      container.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+      });
+
+      container.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+
+      container.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+
+        let moveX = e.touches[0].clientX - startX;
+        currentX += moveX * 0.5;
+
+        pano.style.transform = `translateX(${currentX}px)`;
+
+        startX = e.touches[0].clientX;
+      });
+    }
+
+    // ---------------- NAVIGATION ----------------
+    function goBack() {
+      window.location.href = "index.html";
+    }
+
+  </script>
+
+</body>
+</html>
