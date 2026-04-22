@@ -1,8 +1,8 @@
 const countries = {
   japan: {
     name: "Japan",
-    image: "assets/images/japan.jpg",
-    audio: "assets/audio/japan.mp3",
+    image: "japan.jpg",
+    audio: "japan.mp3",
     desc: "A land of technology, anime, and ancient traditions.",
     facts: [
       "Capital: Tokyo",
