@@ -1,8 +1,8 @@
 const countries = {
   japan: {
     name: "Japan",
-    image: "japan.jpg",
-    audio: "japan.mp3",
+    image: "./japan.jpg",
+    audio: "./japan.mp3",
     desc: "A land of technology, anime, and ancient traditions.",
     facts: [
       "Capital: Tokyo",
@@ -13,8 +13,8 @@ const countries = {
 
   srilanka: {
     name: "Sri Lanka",
-    image: "srilanka.jpg",
-    audio: "srilanka.mp3",
+    image: "./srilanka.jpg",
+    audio: "./srilanka.mp3",
     desc: "Island of tea, beaches, and rich cultural heritage.",
     facts: [
       "Capital: Sri Jayawardenepura Kotte",
@@ -25,8 +25,8 @@ const countries = {
 
   france: {
     name: "France",
-    image: "paris.jpg",
-    audio: "france.mp3",
+    image: "./paris.jpg",
+    audio: "./france.mp3",
     desc: "Romance, art, and the Eiffel Tower.",
     facts: [
       "Capital: Paris",
