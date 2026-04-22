@@ -13,8 +13,8 @@ const countries = {
 
   srilanka: {
     name: "Sri Lanka",
-    image: "assets/images/srilanka.jpg",
-    audio: "assets/audio/srilanka.mp3",
+    image: "srilanka.jpg",
+    audio: "srilanka.mp3",
     desc: "Island of tea, beaches, and rich cultural heritage.",
     facts: [
       "Capital: Sri Jayawardenepura Kotte",
@@ -25,8 +25,8 @@ const countries = {
 
   france: {
     name: "France",
-    image: "assets/images/paris.jpg",
-    audio: "assets/audio/france.mp3",
+    image: "paris.jpg",
+    audio: "france.mp3",
     desc: "Romance, art, and the Eiffel Tower.",
     facts: [
       "Capital: Paris",
